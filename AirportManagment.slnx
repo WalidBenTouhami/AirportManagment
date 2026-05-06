@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Am.ApplicationCore/Am.ApplicationCore.csproj" />
+  <Project Path="Am.Ui.Console/Am.Ui.Console.csproj" />
+</Solution>
