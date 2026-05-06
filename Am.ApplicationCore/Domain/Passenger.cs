@@ -10,7 +10,7 @@ namespace Am.ApplicationCore.Domain
 
         public DateTime BirthDate { get; set; }
 
-        public string Emailaddress { get; set; }
+        public string EmailAddress { get; set; }
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -21,14 +21,14 @@ namespace Am.ApplicationCore.Domain
         public ICollection<Flight> Flights { get; set; }
 
 
-        public bool checkProfile(string Nom, string Prenom)
+        public bool checkProfile1(string Nom, string Prenom)
         {
             return FirstName == Prenom && LastName == Nom;
         }
 
-        public bool checkProfile(string Nom, string Prenom, string Email)
+        public bool checkProfile1(string Nom, string Prenom, string Email)
         {
-            return FirstName == Prenom && LastName == Nom && Email == Emailaddress;
+            return FirstName == Prenom && LastName == Nom && Email == EmailAddress;
         }
 
         public bool checkProfile2(string Nom, string Prenom, string Email = null)
@@ -36,7 +36,7 @@ namespace Am.ApplicationCore.Domain
             if (Email==null)
             
                  return FirstName == Prenom && LastName == Nom;
-               return checkProfile( Nom, Prenom, Email);       
+               return checkProfile1( Nom, Prenom, Email);       
         }
 
         public virtual void PassengerType()

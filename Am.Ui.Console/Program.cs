@@ -1,12 +1,9 @@
-﻿
-
-using Am.ApplicationCore.Domain;
+﻿using Am.ApplicationCore.Domain;
+using Am.ApplicationCore.Services;
 
 Console.WriteLine("Hello, World!");
 
-
 // consterecteur par defaut
-
 Plane p1 = new Plane();
 p1.Capacity = 10;
 p1.ManufactureDate = new DateTime(2020, 07, 07);
@@ -14,16 +11,13 @@ p1.PlaneType = PlaneType.Boing ;
 
 
 // constructeur paramétré
-
 Plane p2 = new Plane(300, new DateTime(2000, 07, 07), 222, PlaneType.Airbus);
-
 
 Console.WriteLine(p2.ToString());
 Console.WriteLine(p1.ToString());
 
 
 //initializeur de Objet sans ordre de propriété 
-
 Plane p3 = new Plane()
 {
     Capacity = 200,
@@ -36,31 +30,28 @@ Console.WriteLine(p3.ToString());
 
 
 
-Passenger ck = new Passenger
+Passenger ps1 = new Passenger
 {
     FirstName= "walid",
     LastName= "walid",
-
 };
 
 
 
-Console.WriteLine(ck.checkProfile2("walid", "walid"));
+Console.WriteLine(ps1.checkProfile2("walid", "walid"));
 
-Passenger ck2 = new Passenger
+Passenger ps2 = new Passenger
 {
     FirstName = "walid",
     LastName = "walid",
     
-    Emailaddress = "walid@gmail.com",
+    EmailAddress = "walid@gmail.com",
 
 };
 
-
-
-Console.WriteLine(ck2.checkProfile2("walid", "walid", "walid@gmail.com"));
+Console.WriteLine(ps2.checkProfile2("walid", "walid", "walid@gmail.com"));
 Console.WriteLine("***********test Passenger************");
-ck2.PassengerType();
+ps2.PassengerType();
 
 Console.WriteLine("***********test Traveller************");
 Traveller T = new Traveller();
@@ -69,4 +60,13 @@ T.PassengerType();
 Console.WriteLine("***********test Staff************");
 Staff S = new Staff();
 S.PassengerType();
+
+//Instancier la classe & alimenter l'objet flights de testData
+FlightMethod fm = new FlightMethod();
+fm.Flights = testData.listFlights;
+
+foreach (var item in fm.GetFlightDates("Paris"))
+{
+    Console.WriteLine(item);
+}
 

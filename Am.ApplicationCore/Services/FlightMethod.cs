@@ -12,7 +12,17 @@ namespace Am.ApplicationCore.Services
 
         public IList<DateTime> GetFlightDates(string destination)
         { List<DateTime> L1 = new List<DateTime>();
-            for(int i = 0; i < Flights.Count; i++)
+            foreach (var f in Flights)
+            {
+                if (destination == f.Destination)
+                {
+                    L1.Add(f.FlightDate);
+                }
+            }
+            return L1;
+
+            /*
+             for(int i = 0; i < Flights.Count; i++)
             {
                 if (destination == Flights[i].Destination) 
                 {
@@ -20,7 +30,11 @@ namespace Am.ApplicationCore.Services
                 }
             }
             return L1;
-            ;
+            */
+
+
+
+
         }
     }
 }
