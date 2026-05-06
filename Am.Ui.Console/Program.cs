@@ -63,10 +63,12 @@ S.PassengerType();
 
 //Instancier la classe & alimenter l'objet flights de testData
 FlightMethod fm = new FlightMethod();
-fm.Flights = testData.listFlights;
+fm.flights = testData.listFlights;
 
 foreach (var item in fm.GetFlightDates("Paris"))
 {
     Console.WriteLine(item);
 }
+
+fm.ShowFlightDetails(testData.BoingPlane);
 
