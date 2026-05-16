@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="Am.ApplicationCore/Am.ApplicationCore.csproj" />
+  <Project Path="AM.Infra/AM.Infra.csproj" Id="a377be67-007b-4324-92cd-0b50d44f1c50" />
   <Project Path="Am.Ui.Console/Am.Ui.Console.csproj" />
 </Solution>

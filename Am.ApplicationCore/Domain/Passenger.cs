@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,35 +8,22 @@ namespace Am.ApplicationCore.Domain
     {
 
 
+        public int PassengerId { get; set; }
         public DateTime BirthDate { get; set; }
-
         public string EmailAddress { get; set; }
         public string FirstName { get; set; }
-
         public string LastName { get; set; }
-
-        public string PassporttNumber { get; set; }
-        public int TelNumber { get; set; }
+        public string PassportNumber { get; set; }
+        public string TelNumber { get; set; }
 
         public ICollection<Flight> Flights { get; set; }
 
-
-        public bool checkProfile1(string Nom, string Prenom)
+        public bool CheckProfile(string firstName, string lastName, string email = null)
         {
-            return FirstName == Prenom && LastName == Nom;
-        }
-
-        public bool checkProfile1(string Nom, string Prenom, string Email)
-        {
-            return FirstName == Prenom && LastName == Nom && Email == EmailAddress;
-        }
-
-        public bool checkProfile2(string Nom, string Prenom, string Email = null)
-        {
-            if (Email==null)
-            
-                 return FirstName == Prenom && LastName == Nom;
-               return checkProfile1( Nom, Prenom, Email);       
+            if (email == null)
+                return FirstName == firstName && LastName == lastName;
+                
+            return FirstName == firstName && LastName == lastName && EmailAddress == email;
         }
 
         public virtual void PassengerType()

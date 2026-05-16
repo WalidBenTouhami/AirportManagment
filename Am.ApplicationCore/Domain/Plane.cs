@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -42,41 +42,8 @@ namespace Am.ApplicationCore.Domain
 
         public override string ToString()
         {
-            return "Capaciy"+Capacity+ "ManufactureDate"+ ManufactureDate+ "PlaneType"+ PlaneType ;
+            return $"Capacity: {Capacity}, ManufactureDate: {ManufactureDate}, PlaneType: {PlaneType}";
         }
-
-
-
-
-        //JAVA EXEMPLE 
-
-        //private int capacity;
-        //public int getCapacity()
-        //{
-        //    return capacity;
-        //}
-
-        //public void setCapacity(int capacity)
-
-        //{
-
-        //     this.capacity = capacity;
-        //}
-
-        //// version C# propg : propg +tab
-
-        //public int  MyProperty { get; private set; }
-
-
-        //// version C# full : propfull +tab
-
-        //private int myVar;
-
-        //public int MyProperty2
-        //{
-        //    get { return myVar; }
-        //    set { myVar = value; }
-        //}
 
 
 
