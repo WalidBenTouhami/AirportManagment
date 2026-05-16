@@ -11,8 +11,14 @@ p1.Capacity = 10;
 p1.ManufactureDate = new DateTime(2020, 07, 07);
 p1.PlaneType = PlaneType.Boeing;
 
-// Constructeur paramétré
-Plane p2 = new Plane(300, new DateTime(2000, 07, 07), 222, PlaneType.Airbus);
+// Constructeur paramétré supprimé, utilisation de l'initialiseur d'objet (TP II.3)
+Plane p2 = new Plane() 
+{ 
+    Capacity = 300, 
+    ManufactureDate = new DateTime(2000, 07, 07), 
+    PlaneId = 222, 
+    PlaneType = PlaneType.Airbus 
+};
 
 Console.WriteLine(p2.ToString());
 Console.WriteLine(p1.ToString());

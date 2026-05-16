@@ -1,56 +1,46 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Am.ApplicationCore.Domain
 {
     public class Plane
     {
-
-
-        // nous avons 2 constructeurs : un constructeur paramétré et un constructeur par défaut
-        // constructeur paramétré : il prend des paramètres pour initialiser les propriétés de la classe
-        // constructeur par défaut : il ne prend pas de paramètres et initialise les propriétés de la classe avec des valeurs par défaut 
-        // LE PARDEFAUT AJOUTER POUR RESOUDRE LE PROBLEME DE SERIALIZATION DANS PROGRAMMS.CS 
-        public Plane(int capacity, DateTime manufactureDate, int planeId, PlaneType planeType)
+        /* TP Partie II.2 : Constructeur demandé
+        public Plane(PlaneType pt, int capacity, DateTime date)
         {
+            PlaneType = pt;
             Capacity = capacity;
-            ManufactureDate = manufactureDate;
-            PlaneId = planeId;
-            PlaneType = planeType;
+            ManufactureDate = date;
         }
+        */
 
-
+        // TP Partie II.3 : Supprimer le constructeur paramétré (commenté ci-dessus)
+        // et utiliser les initialiseurs d'objets (voir Program.cs)
 
         public Plane()
         {
-
+            // Initialisation de la collection pour éviter le warning CS8618
+            Flights = new List<Flight>();
         }
 
-
-        // version C# light : prop +tab 
         public int Capacity { get; set; }
 
         public DateTime ManufactureDate { get; set; }
 
         public int PlaneId { get; set; }
 
-        public PlaneType PlaneType  { get; set; }
+        public PlaneType PlaneType { get; set; }
 
-        public ICollection <Flight> Flights { get; set; }
+        public ICollection<Flight> Flights { get; set; }
+
+        
 
 
         public override string ToString()
         {
             return $"Capacity: {Capacity}, ManufactureDate: {ManufactureDate}, PlaneType: {PlaneType}";
         }
-
-
-
-
-
-
-
-
     }
 }

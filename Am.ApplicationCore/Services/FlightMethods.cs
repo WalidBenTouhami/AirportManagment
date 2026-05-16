@@ -126,7 +126,7 @@ namespace Am.ApplicationCore.Services
                 .ToList();
         }
 
-        public IEnumerable<IGrouping<string, Flight>> DestinationGroupedFlights()
+        public IEnumerable<IGrouping<string?, Flight>> DestinationGroupedFlights()
         {
             var query = Flights.GroupBy(f => f.Destination);
             return query;

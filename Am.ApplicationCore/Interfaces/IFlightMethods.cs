@@ -13,7 +13,7 @@ namespace Am.ApplicationCore.Interfaces
         double DurationAverage(string destination);
         IList<Flight> OrderedDurationFlights();
         IList<Passenger> SeniorTravellers(Flight flight);
-        IEnumerable<IGrouping<string, Flight>> DestinationGroupedFlights();
+        IEnumerable<IGrouping<string?, Flight>> DestinationGroupedFlights();
         
         // Added from specifications
         IList<Flight> GetFlights(string filterType, string filterValue);
