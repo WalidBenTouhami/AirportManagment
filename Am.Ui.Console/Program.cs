@@ -55,22 +55,38 @@ Console.WriteLine("***********test Staff************");
 Staff S = new Staff();
 S.PassengerType();
 
+// Extension method test
+Console.WriteLine("***********test Extension Method************");
+Console.WriteLine($"Before: {ps2.FirstName} {ps2.LastName}");
+ps2.UpperFullName();
+Console.WriteLine($"After: {ps2.FirstName} {ps2.LastName}");
+
 // Instancier la classe & alimenter l'objet flights de testData
-FlightMethod fm = new FlightMethod();
+FlightMethods fm = new FlightMethods();
+fm.Flights = testData.listFlights;
 
-fm.flights = testData.listFlights;
-
+Console.WriteLine("\n***********test GetFlightDates************");
 foreach (var item in fm.GetFlightDates("Paris"))
 {
     Console.WriteLine(item);
 }
 
-fm.ShowFlightDetails(testData.BoeingPlane);
+Console.WriteLine("\n***********test GetFlights(filterType, filterValue)************");
+foreach (var flight in fm.GetFlights("Destination", "Paris"))
+{
+    Console.WriteLine($"Flight to Paris on: {flight.FlightDate}");
+}
 
+Console.WriteLine("\n***********test ShowFlightDetails (Delegate)************");
+fm.FlightDetailsDel(testData.BoeingPlane);
+
+Console.WriteLine("\n***********test ProgrammedFlightNumber************");
 Console.WriteLine(fm.ProgrammedFlightNumber(new DateTime(2022, 01, 01)));
 
-Console.WriteLine(fm.DurationAverage("Madrid"));
+Console.WriteLine("\n***********test DurationAverage (Delegate)************");
+Console.WriteLine(fm.DurationAverageDel("Madrid"));
 
+Console.WriteLine("\n***********test OrderedDurationFlights************");
 Console.WriteLine(
     string.Join(
         "\n",
@@ -79,6 +95,7 @@ Console.WriteLine(
     )
 );
 
+Console.WriteLine("\n***********test SeniorTravellers************");
 Console.WriteLine(
     string.Join(
         Environment.NewLine,
@@ -87,6 +104,7 @@ Console.WriteLine(
     )
 );
 
+Console.WriteLine("\n***********test DestinationGroupedFlights************");
 var groups = fm.DestinationGroupedFlights();
 
 foreach (var group in groups)
