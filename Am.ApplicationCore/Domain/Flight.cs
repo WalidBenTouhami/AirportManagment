@@ -4,7 +4,7 @@ namespace Am.ApplicationCore.Domain
     {
         public int FlightId { get; set; }
 
-        public string AirlineLogo { get; set; }
+        public string Airline { get; set; }
         public string Departure { get; set; }
         public string? Destination { get; set; }
         public DateTime EffectiveArrival { get; set; }
