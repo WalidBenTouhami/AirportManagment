@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Am.ApplicationCore.Domain
@@ -11,12 +12,24 @@ namespace Am.ApplicationCore.Domain
             Flights = new List<Flight>();
         }
 
-        public int PassengerId { get; set; }
+        [Key]
+        [StringLength(7, ErrorMessage = "Le numéro de passeport ne doit pas dépasser 7 caractères")]
+        public string PassportNumber { get; set; } = null!;
+
+        [DataType(DataType.Date)]
+        [Display(Name = "Date of Birth")]
         public DateTime BirthDate { get; set; }
+
+        [EmailAddress(ErrorMessage = "L'adresse email n'est pas valide")]
         public string? EmailAddress { get; set; }
+
+        [MinLength(3, ErrorMessage = "La longueur minimale est de 3 caractères")]
+        [MaxLength(25, ErrorMessage = "La longueur maximale est de 25 caractères")]
         public string? FirstName { get; set; }
+
         public string? LastName { get; set; }
-        public string? PassportNumber { get; set; }
+
+        [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Le numéro de téléphone doit contenir 8 chiffres")]
         public string? TelNumber { get; set; }
 
         public ICollection<Flight> Flights { get; set; }
