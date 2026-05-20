@@ -1,4 +1,5 @@
 ﻿using Am.ApplicationCore.Domain;
+using AM.Infra.Configurartion;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,13 @@ namespace AM.Infra
 
             base.OnConfiguring(optionsBuilder);
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new FlightConfig());
+            modelBuilder.ApplyConfiguration(new PlaneConfig());
         }
 
     }
