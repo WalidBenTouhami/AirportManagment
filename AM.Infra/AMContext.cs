@@ -38,11 +38,25 @@ namespace AM.Infra
 
         }
 
+        //Configuration fluent API pour les entités de notre application
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new FlightConfig());
             modelBuilder.ApplyConfiguration(new PlaneConfig());
+            //TPH
+            modelBuilder.Entity<Passenger>()
+                .HasDiscriminator<int>("PassengerType")
+                .HasValue<Passenger>(0)
+                .HasValue<Traveller>(1)
+                .HasValue<Staff>(2);
+        }
+
+        //Configuration convention
+        override protected void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+        {
+            base.ConfigureConventions(configurationBuilder);
+            configurationBuilder.Properties<string>().HaveMaxLength(100);
         }
 
     }
