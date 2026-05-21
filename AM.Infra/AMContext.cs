@@ -1,13 +1,10 @@
 ﻿using Am.ApplicationCore.Domain;
 using AM.Infra.Configurartion;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AM.Infra
-{
-    public class AMContext: DbContext
+
+    public class AMContext : DbContext
     {
         //Les entités que nous allons manipuler dans notre application
         public DbSet<Flight> Flights { get; set; }
@@ -27,7 +24,7 @@ namespace AM.Infra
 
               (@"Data Source=(localdb)\mssqllocaldb;
 
-                Initial Catalog=ACC;
+                Initial Catalog=ACC3;
 
                 Integrated Security=true;
 
@@ -44,12 +41,16 @@ namespace AM.Infra
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new FlightConfig());
             modelBuilder.ApplyConfiguration(new PlaneConfig());
-            //TPH
-            modelBuilder.Entity<Passenger>()
-                .HasDiscriminator<int>("PassengerType")
-                .HasValue<Passenger>(0)
-                .HasValue<Traveller>(1)
-                .HasValue<Staff>(2);
+            //TPH(Table Per Hierarchy)
+            //modelBuilder.Entity<Passenger>()
+            //    .HasDiscriminator<int>("PassengerType")
+            //    .HasValue<Passenger>(0)
+            //    .HasValue<Traveller>(1)
+            //    .HasValue<Staff>(2);
+
+            //TPT(Table Per Type)
+            modelBuilder.Entity<Staff>().ToTable("Staffs");
+            modelBuilder.Entity<Traveller>().ToTable("Travellers");
         }
 
         //Configuration convention
@@ -60,4 +61,3 @@ namespace AM.Infra
         }
 
     }
-}
