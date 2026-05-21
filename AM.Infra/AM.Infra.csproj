@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -6,13 +6,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="AMContext.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="AMContext.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.8" />
