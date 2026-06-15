@@ -120,9 +120,10 @@ namespace Am.ApplicationCore.Services
 
         public IList<Passenger> SeniorTravellers(Flight flight)
         {
-            return flight.Passengers.Where(item => item is Traveller)
+            return flight.Tickets.Select(t => t.Passenger).OfType<Traveller>()
                 .OrderBy(item => item.BirthDate)
                 .Take(3)
+                .Cast<Passenger>()
                 .ToList();
         }
 

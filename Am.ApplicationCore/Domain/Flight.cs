@@ -8,7 +8,7 @@ namespace Am.ApplicationCore.Domain
     {
         public Flight()
         {
-            Passengers = new List<Passenger>();
+            Tickets = new List<Ticket>();
         }
 
         public int FlightId { get; set; }
@@ -19,8 +19,8 @@ namespace Am.ApplicationCore.Domain
         public DateTime EffectiveArrival { get; set; }
         public int EstimatedDuration { get; set; }
         public DateTime FlightDate { get; set; }
-        public Plane? Plane { get; set; }
-        public ICollection<Passenger> Passengers { get; set; }
+        public virtual Plane? Plane { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
 
         [ForeignKey("Plane")]
         public int PlaneFK { get; set; }

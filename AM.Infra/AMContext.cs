@@ -16,11 +16,12 @@ public class AMContext : DbContext
     public DbSet<Staff> Staffs { get; set; }
 
     public DbSet<Traveller> Travellers { get; set; }
+    public DbSet<Ticket> Tickets { get; set; }
 
     // Chaine de connexion à la base de données
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer
+        optionsBuilder.UseLazyLoadingProxies().UseSqlServer
 
           (@"Data Source=(localdb)\mssqllocaldb;
 
@@ -41,16 +42,13 @@ public class AMContext : DbContext
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfiguration(new FlightConfig());
         modelBuilder.ApplyConfiguration(new PlaneConfig());
+        modelBuilder.ApplyConfiguration(new TicketConfig());
         //TPH(Table Per Hierarchy)
-        //modelBuilder.Entity<Passenger>()
-        //    .HasDiscriminator<int>("PassengerType")
-        //    .HasValue<Passenger>(0)
-        //    .HasValue<Traveller>(1)
-        //    .HasValue<Staff>(2);
-
-        //TPT(Table Per Type)
-        modelBuilder.Entity<Staff>().ToTable("Staffs");
-        modelBuilder.Entity<Traveller>().ToTable("Travellers");
+        modelBuilder.Entity<Passenger>()
+            .HasDiscriminator<int>("IsTraveller")
+            .HasValue<Passenger>(0)
+            .HasValue<Traveller>(1)
+            .HasValue<Staff>(2);
     }
 
     //Configuration convention
@@ -58,6 +56,7 @@ public class AMContext : DbContext
     {
         base.ConfigureConventions(configurationBuilder);
         configurationBuilder.Properties<string>().HaveMaxLength(100);
+        configurationBuilder.Properties<DateTime>().HaveColumnType("date");
     }
 
 }

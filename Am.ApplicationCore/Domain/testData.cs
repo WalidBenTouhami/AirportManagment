@@ -22,8 +22,17 @@ namespace Am.ApplicationCore.Domain
             Destination = "Paris",
             EffectiveArrival = new DateTime(2022, 01, 01, 17, 10, 10),
             EstimatedDuration = 110,
-            Passengers = new List<Passenger> { captain, hostess1, hostess2, traveller1, traveller2, traveller3, traveller4, traveller5 }
-       ,
+            Tickets = new List<Ticket> 
+            { 
+                new Ticket { Passenger = captain, Prix = 100 },
+                new Ticket { Passenger = hostess1, Prix = 100 },
+                new Ticket { Passenger = hostess2, Prix = 100 },
+                new Ticket { Passenger = traveller1, Prix = 100 },
+                new Ticket { Passenger = traveller2, Prix = 100 },
+                new Ticket { Passenger = traveller3, Prix = 100 },
+                new Ticket { Passenger = traveller4, Prix = 100 },
+                new Ticket { Passenger = traveller5, Prix = 100 }
+            },
             Plane = Airbusplane
         };
         public static Flight flight2 = new Flight { FlightDate = new DateTime(2022, 01, 01, 21, 10, 10), Destination = "Paris", EffectiveArrival = new DateTime(2022, 02, 01, 23, 10, 10), EstimatedDuration = 105, Plane = BoeingPlane };

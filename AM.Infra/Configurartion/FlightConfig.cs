@@ -1,4 +1,4 @@
-﻿using Am.ApplicationCore.Domain;
+using Am.ApplicationCore.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -11,9 +11,7 @@ namespace AM.Infra.Configurartion
     {
         public void Configure(EntityTypeBuilder<Flight> builder)
         {
-            builder.HasMany(f => f.Passengers)
-                .WithMany(f => f.Flights)
-                .UsingEntity(f => f.ToTable("Reservation"));
+
 
             builder.HasOne(f => f.Plane)
                 .WithMany(p => p.Flights)

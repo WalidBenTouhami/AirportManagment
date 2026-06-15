@@ -1,9 +1,11 @@
 using Am.ApplicationCore.Domain;
 using Am.ApplicationCore.Services;
-using AM.Infra;
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+
+using AM.Infra;
 
 Console.WriteLine("Hello, World!");
 
@@ -127,7 +129,7 @@ foreach (var group in groups)
     }
 }
 
-//AMContext am = new AMContext();
-//am.Planes.Add(testData.Airbusplane);
-//am.saveChanges();
-//ConsoleWriteLine("ajouté avec succès");
+AMContext am = new AMContext();
+// am.Planes.Add(testData.Airbusplane);
+// am.SaveChanges();
+// Console.WriteLine("ajouté avec succès");

@@ -9,8 +9,11 @@ namespace Am.ApplicationCore.Domain
     {
         public Passenger()
         {
-            Flights = new List<Flight>();
+            Tickets = new List<Ticket>();
         }
+
+        public int Id { get; set; }
+
 
         [Key]
         [StringLength(7, ErrorMessage = "Le numéro de passeport ne doit pas dépasser 7 caractères")]
@@ -32,7 +35,7 @@ namespace Am.ApplicationCore.Domain
         [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Le numéro de téléphone doit contenir 8 chiffres")]
         public string? TelNumber { get; set; }
 
-        public ICollection<Flight> Flights { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
 
         /* TP Partie I.1 Polymorphisme par signature : 
            1. Une méthode pour vérifier le profile (nom, prénom)
